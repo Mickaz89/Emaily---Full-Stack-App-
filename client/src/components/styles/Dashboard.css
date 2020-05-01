@@ -1,0 +1,25 @@
+.root {
+    display: flex;
+    flex-direction: row;
+}
+.root .ant-menu {
+    margin-right: 40px !important;
+}
+#root > div > div.root > div:nth-child(1) {
+    width: inherit !important;
+}
+.root .ant-menu-inline {
+    width: 256px;
+}
+
+.root .ant-menu .ant-menu-inline .ant-menu-item, .ant-menu-inline .ant-submenu-title  {
+    width: 256px !important;
+}
+
+#root > div > div.root  > ul > li.ant-menu-item {
+    width: 256px !important;
+}
+
+#root > div > div.root > div:nth-child(1) > ul > li.ant-menu-item.ant-menu-item-selected {
+
+}

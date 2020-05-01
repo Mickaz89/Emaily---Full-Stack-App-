@@ -1,0 +1,46 @@
+.sider .myLogo {
+    display: flex;
+    top: 0;
+    padding: 28px;
+    left: 0;
+    width: 100%;
+}
+.sider .myLogo img{
+    max-height: 100%;
+    max-width: 100%;
+    margin: auto;
+    border-radius: 5px;
+}
+.sider {
+    background-color: #0774f3 !important;
+}
+.sider .ant-menu-light {
+
+    background-color: #0774f3 !important;
+}
+.ant-menu-inline, .ant-menu-vertical, .ant-menu-vertical-left {
+    border-right:none !important;
+}
+.sider .ant-menu-item {
+    border-right: none !important;
+    color: rgba(239, 239, 239, 0.5) !important;
+    width: calc(100% + 0px) !important;
+    border-right: none !important;
+}
+.sider .ant-menu-item::after {
+   border-right: none !important;
+}
+.sider .ant-menu-item-selected {
+    border-right: none !important;
+    background-color: #2355FF !important;
+    color: white !important;
+}
+.site-layout-background {
+    background-color: white !important;
+}
+.site-layout .site-layout-background .topMenu {
+    display: flex;
+}
+.site-layout .site-layout-background .topMenu .logo {
+   margin-right: auto;
+}

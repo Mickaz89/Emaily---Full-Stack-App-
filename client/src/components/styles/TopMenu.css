@@ -1,0 +1,8 @@
+.topMenu .ant-menu{
+    display: flex ;
+    flex-direction: row ;
+}
+
+.topMenu .ant-menu .logo {
+   margin-right: auto;
+ }
