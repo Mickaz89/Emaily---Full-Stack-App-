@@ -1,0 +1,72 @@
+html, body {
+    height: 100vh;
+}
+
+.root {
+   height: 100vh;
+    background-size: 100% 100%;
+    background-image: url("/background.jpg");
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.layout{
+
+
+}
+.layout .login{
+
+}
+.layout h1 {
+
+}
+
+.container{
+    width: 600px;
+    height: 600px;
+    background-color: white;
+    box-shadow: 0 2px 12px 0 rgba(180, 180, 180, 0.5);
+    border-radius: 4px;
+
+
+}
+
+.container h1 {
+    display: flex;
+    justify-content: center;
+    font-family: Montserrat;
+    margin-top: 20px;
+
+}
+
+.googleButton {
+    height: 46px !important;
+    color: #4d566b !important;
+    border-radius: 4px !important;
+    box-shadow: 0 2px 4px 0 rgba(180, 180, 180, 0.5) !important;
+    background-color: #ffffff !important;
+    border: none !important;
+    width: 400px;
+
+}
+.container .googleButton {
+    display: flex;
+    justify-content: center;
+}
+.googleButton p {
+
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-family: Montserrat;
+}
+.icon{
+    margin-right: 9px;
+}
+.container .button {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}

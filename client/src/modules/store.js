@@ -3,7 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import _ from 'lodash';
 import thunk from 'redux-thunk';
 import authReducer from "../reducers/authReducer";
-import sidebarReducer from "../reducers/sidebarReducer";
+import sidebarReducer from "../reducers/modalReducer";
 
 
 const selectedReducers = [ 'auth'];

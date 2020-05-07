@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {BrowserRouter, Link, Route, Switch, useParams, useRouteMatch} from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {BrowserRouter, Link, Route, Switch, useParams, useRouteMatch,useLocation} from "react-router-dom";
 import { Layout, Menu, Button } from 'antd';
 import Icon from '@ant-design/icons';
 import { createFromIconfontCN } from '@ant-design/icons';
@@ -7,9 +7,7 @@ import {
     MenuOutlined ,
     HomeOutlined,
     UserOutlined,
-    MenuFoldOutlined,
-    VideoCameraOutlined,
-    UploadOutlined,
+    MailOutlined
 } from '@ant-design/icons';
 import './styles/DashboardLayout.css'
 import UsersLayout from "./Users/UsersLayout";
@@ -27,9 +25,12 @@ const FoodSvg = () => (
 const FoodIcon = props => <Icon component={FoodSvg} {...props} />;
 
 
-const DashboardLayout = () => {
+const DashboardLayout = ({children}) => {
+    let {  url,path } = useRouteMatch();
     const [collapsed, setCollapsed] = useState(false);
     const [current, setCurrent] = useState('');
+    let location = useLocation();
+
 
     const handleClick = e => {
         console.log('click ', e);
@@ -38,63 +39,64 @@ const DashboardLayout = () => {
     const toggle = () => {
         setCollapsed(!collapsed)
     };
-
-    let {  url } = useRouteMatch();
         return (
-            <Layout  style={{ minHeight: '100vh' }}>
-                <Sider className='sider' trigger={null} collapsible collapsed={collapsed}>
-                    <div className="myLogo" >
-                        <img src={process.env.PUBLIC_URL + '/logo.png'}/>
-                    </div>
-                    <Menu theme="light" mode="inline" defaultSelectedKeys={['1']}>
-                        <Menu.Item key="1">
-                            <HomeOutlined />
-                            <span>Home</span>
-                        </Menu.Item>
-                        <Menu.Item key="2">
-                            <Link to={`/users`}/>
-                            <UserOutlined />
-                            <span>Users</span>
-                        </Menu.Item>
-                        <Menu.Item key="3">
-                            <FoodIcon />
-                            <span>Food</span>
-                        </Menu.Item>
-                    </Menu>
-                </Sider>
-                <Layout className="site-layout">
-                    <Header className="site-layout-background" style={{ padding: 0 }}>
-                        <Menu  className="topMenu" mode="horizontal" >
-                            <Menu.Item className='logo'>
-                                <Button type="primary" onClick={toggle} style={{ marginLeft: 16 }} icon={<MenuOutlined />}/>
+            <div>
+                <Layout  style={{ minHeight: '100vh' }}>
+                    <Sider className='sider' trigger={null} collapsible collapsed={collapsed}>
+                        <div className="myLogo" >
+                            <img src={process.env.PUBLIC_URL + '/logo.png'}/>
+                        </div>
+                        <Menu theme="light" mode="inline" defaultSelectedKeys={location.pathname.split("/")[2]} >
+                            <Menu.Item key="home">
+                                <Link to={`${url}/`}/>
+                                <HomeOutlined />
+                                <span>Home</span>
                             </Menu.Item>
-
-                            <Menu.Item  className='account' key="account" >
-                                <a href="/api/logout">Logout</a>
+                            <Menu.Item key="users">
+                                <Link to={`${url}/users`}/>
+                                <UserOutlined />
+                                <span>Users</span>
                             </Menu.Item>
-
-
+                            <Menu.Item key="food">
+                                <Link to={`${url}/food`}/>
+                                <FoodIcon />
+                                <span>Food</span>
+                            </Menu.Item>
+                            <Menu.Item key="mail">
+                                <Link to={`${url}/mail`}/>
+                                <MailOutlined />
+                                <span>Mail</span>
+                            </Menu.Item>
                         </Menu>
-                    </Header>
-                    <Content
-                        className="site-layout-background"
-                        style={{
-                            margin: '24px 16px',
-                            padding: 24,
-                            minHeight: 280,
-                        }}
-                    >
-                        <Switch>
-                            <Route exact path="/users">
-                                <UsersLayout/>
-                            </Route>
-                            <Route exact path="/food">
-                                <UsersLayout/>
-                            </Route>
-                        </Switch>
-                    </Content>
+                    </Sider>
+                    <Layout className="site-layout">
+                        <Header className="site-layout-background" style={{ padding: 0 }}>
+                            <Menu  className="topMenu" mode="horizontal" >
+                                <Menu.Item className='logo'>
+                                    <Button type="primary" onClick={toggle} style={{ marginLeft: 16 }} icon={<MenuOutlined />}/>
+                                </Menu.Item>
+
+                                <Menu.Item  className='account' key="account" >
+                                    <a href="/api/logout">Logout</a>
+                                </Menu.Item>
+
+
+                            </Menu>
+                        </Header>
+                        <Content
+                            className="site-layout-background"
+                            style={{
+                                margin: '24px 16px',
+                                padding: 24,
+                                minHeight: 280,
+                            }}
+                        >
+                            {children}
+                        </Content>
+                    </Layout>
                 </Layout>
-            </Layout>
+            </div>
+
         );
 }
 

@@ -1,0 +1,8 @@
+.root{
+    border: none;
+    background-color: transparent;
+    padding: 0px;
+    height: fit-content;
+    cursor: pointer;
+    outline: none;
+}

@@ -6,6 +6,8 @@ import PrivateRoute from './modules/routes/PrivateRoute'
 import * as actions from './actions/index';
 import './components/styles/App.css';
 import DashboardLayout from "./components/DashboardLayout";
+import Dashboard from "./components/Dashboard";
+import NestedExemples from "./components/NestedExemples";
 
 
 class App extends React.Component  {
@@ -23,7 +25,8 @@ class App extends React.Component  {
             return (
                 <Switch>
                     <Route exact path="/" render={() => <Redirect to={this.props.auth ? '/dashboard' : '/login'}/>}/>
-                    <PrivateRoute exact path="/dashboard" ><DashboardLayout/></PrivateRoute>
+                    <PrivateRoute path="/dashboard"><Dashboard /></PrivateRoute>
+                    <Route exact path="/nested" component={NestedExemples} />
                     <Route exact path="/login" component={Login} />
                 </Switch>
 

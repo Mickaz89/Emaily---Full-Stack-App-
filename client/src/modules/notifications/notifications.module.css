@@ -1,0 +1,41 @@
+.icon{
+    margin-top: 11px !important;
+}
+
+.root{
+    background-color: blue !important;
+    color: white;
+    font-family: Rubik;
+    font-size: 17px;
+    height: 74px;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px 0 rgba(121, 121, 121, 0.5) ;
+}
+
+.root div div {
+    color: white !important;
+    font-family: Rubik;
+    font-size: 17px;
+}
+
+.root div div div{
+    margin-top: 9px;
+}
+
+.root a{
+    display: none;
+}
+
+.close{
+    position: absolute;
+    right: 17px;
+    top: 50%;
+    margin-top: -21px !important;
+    z-index: 2;
+    background-color: blue;
+}
+
+.ant-notification-notice-with-icon{
+    display: flex;
+    align-items: center;
+}

@@ -1,5 +1,7 @@
 import axios from "axios";
-import {LOADING_FETCH_USER, FETCH_USER, OPEN_SIDEBAR } from "./types";
+import {openSuccessNotification} from "../modules/notifications/notifications";
+import {history} from "../modules/routes/history";
+import {LOADING_FETCH_USER, FETCH_USER, CLOSE_MODAL, OPEN_MODAL } from "./types";
 
 export const fetchUser = () => async dispatch => {
 
@@ -16,6 +18,21 @@ export const handleToken = token => async dispatch => {
   dispatch({ type: FETCH_USER, payload: res.data });
 };
 
-export const openSidebar = () => ({
-  type: OPEN_SIDEBAR
+export const openModal = () => ({
+  type: OPEN_MODAL
 });
+export const closeModal = () => ({
+  type: CLOSE_MODAL
+});
+
+export const submitSurvey = (values) => async dispatch => {
+  console.log('POST SURVEY ACTION ');
+  console.log('POST SURVEY values ' , values);
+  console.log('POST SURVEY history ' , history);
+  const res = await axios.post('/api/surveys', values);
+  dispatch({ type: CLOSE_MODAL});
+  openSuccessNotification(`Saved`, `open${Date.now()}`);
+  dispatch({ type: FETCH_USER, payload: res.data });
+
+
+};

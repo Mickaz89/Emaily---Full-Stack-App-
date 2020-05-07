@@ -2,17 +2,20 @@ import React from "react";
 import { List, Avatar, Button, Skeleton } from 'antd';
 import './styles/UsersLayout.module.css';
 import styles from './styles/UsersLayout.module.css';
+import {useParams} from "react-router-dom";
 
-class UsersLayout extends React.Component {
+function UsersLayout() {
+    // The <Route> that rendered this component has a
+    // path of `/topics/:topicId`. The `:topicId` portion
+    // of the URL indicates a placeholder that we can
+    // get from `useParams()`.
+    let { topicId } = useParams();
 
-    render() {
-
-        return (
-            <div className={styles.root}>
-                <h1>Hello</h1>
-            </div>
-        );
-    }
+    return (
+        <div>
+            <h1>Users</h1>
+        </div>
+    );
 }
 
 export default UsersLayout;
