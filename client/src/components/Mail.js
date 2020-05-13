@@ -11,7 +11,8 @@ import {withRouter} from "react-router-dom";
 import validateEmail from "../utils/validateEmail";
 import FormTest from "./surveys/FormTest";
 import FormButtonTest from "./surveys/FormButtonTest";
-
+import styles from './styles/Mail.module.css';
+import ListUI from "./UI/ListUI";
 
 class Mail extends React.Component {
     state = { visible: false, error:'abc', showForm:true };
@@ -41,10 +42,13 @@ class Mail extends React.Component {
 
         return (
             <div>
-                <h1>Mail</h1>
-                <br/>
-                <br/>
-                <Button type="primary" shape="circle" icon={<PlusOutlined />} onClick={this.showModal} />
+                <div className={styles.header}>
+                    <h1>Mail</h1>
+                    <Button type="primary" shape="circle" icon={<PlusOutlined />} onClick={this.showModal} />
+                </div>
+                <div>
+                    <ListUI/>
+                </div>
                 <ModalUI
                     visible={this.props.modal.open}
                     onOk={this.handleOk}

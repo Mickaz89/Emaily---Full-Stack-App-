@@ -77,7 +77,7 @@ const DashboardLayout = ({children}) => {
                                 </Menu.Item>
 
                                 <Menu.Item  className='account' key="account" >
-                                    <a href="/api/logout">Logout</a>
+                                    <a href="/api/admin/logout">Logout</a>
                                 </Menu.Item>
 
 

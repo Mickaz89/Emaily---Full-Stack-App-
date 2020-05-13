@@ -1,15 +1,23 @@
 import axios from "axios";
 import {openSuccessNotification} from "../modules/notifications/notifications";
 import {history} from "../modules/routes/history";
-import {LOADING_FETCH_USER, FETCH_USER, CLOSE_MODAL, OPEN_MODAL } from "./types";
+import {LOADING_FETCH_USER, FETCH_USER, CLOSE_MODAL, OPEN_MODAL, FETCH_SURVEYS,LOGIN } from "./types";
 
 export const fetchUser = () => async dispatch => {
 
   dispatch({ type: LOADING_FETCH_USER });
 
-  const res = await axios.get("/api/current_user");
+  const res = await axios.get("/api/admin/current_user");
 
   dispatch({ type: FETCH_USER, payload: res.data });
+};
+
+export const login = (values) => async dispatch => {
+  console.log('POST LOGIN values ' , values);
+  const res = await axios.post('/api/admin/login', values);
+  dispatch({ type: LOGIN, payload: res.data });
+
+
 };
 
 export const handleToken = token => async dispatch => {
@@ -36,3 +44,9 @@ export const submitSurvey = (values) => async dispatch => {
 
 
 };
+
+export const fetchSurveys = () => async dispatch => {
+  const res = await  axios.get('/api/surveys');
+
+  dispatch({type : FETCH_SURVEYS, payload : res.data})
+}

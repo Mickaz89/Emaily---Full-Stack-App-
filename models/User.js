@@ -19,14 +19,12 @@ var options = {
 
 const userSchema = new Schema({
   role: String,
-  googleId: String,
-  credits: { type: Number, default: 0 },
   username: String,
   password: String,
-  token: String,
   name: String
 });
 
-// userSchema.plugin(passportLocalMongoose, options);
+
+userSchema.plugin(passportLocalMongoose, options);
 
 mongoose.model("users", userSchema);

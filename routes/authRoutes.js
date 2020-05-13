@@ -1,11 +1,9 @@
 const passport = require("passport");
 const requireLogin = require("../middlewares/requireLogin");
 const mongoose = require("mongoose");
-const User = mongoose.model("users");
-const Admin = mongoose.model("admins");
 const keys = require("../config/keys");
-
-
+const getReq = require("../services/getReq");
+const User = mongoose.model("users");
 
 module.exports = app => {
 
@@ -25,9 +23,9 @@ module.exports = app => {
   );
 
   // AUTH ADMIN
-  app.post('/register', function(req, res) {
-      const Admins=new Admin({role:'Admin', email: req.body.email, username : req.body.username});
-      Admin.register(Admins, req.body.password, function(err, user) {
+  app.post('/api/admin/register', function(req, res) {
+      const Users=new User({role:'Admin', email: req.body.email, username : req.body.username});
+      User.register(Users, req.body.password, function(err, user) {
           if (err) {
               res.json(err)
           }else{
@@ -41,7 +39,7 @@ module.exports = app => {
   //       failureRedirect: '/'
   //   }));
 
-  app.post('/admin/login', function(req, res, next) {
+  app.post('/api/admin/login', function(req, res, next) {
       passport.authenticate('local', function(err, user, info) {
           if (err) { return res.send(info); }
           if (!user) { return res.send(info); }
@@ -53,12 +51,13 @@ module.exports = app => {
   });
 
 
-  app.get("/api/logout", (req, res) => {
+  app.get("/api/admin/logout", (req, res) => {
     req.logout();
     res.redirect("/");
   });
 
-  app.get("/api/current_user", (req, res) => {
+  app.get("/api/admin/current_user", (req, res) => {
+      console.log('USER ', req.user);
     res.send(req.user);
   });
 };
